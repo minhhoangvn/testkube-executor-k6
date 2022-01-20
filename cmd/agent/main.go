@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/kubeshop/testkube-executor-template/pkg/runner"
+	"github.com/minhhoangvn/testkube-executor-k6/pkg/runner"
 	"github.com/kubeshop/testkube/pkg/runner/agent"
 )
 
