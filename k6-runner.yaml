@@ -1,0 +1,10 @@
+apiVersion: executor.testkube.io/v1
+kind: Executor
+metadata:
+  name: k6-executor
+  namespace: testkube
+spec:
+  executor_type: job
+  image: hnminh/testkube-executor-k6-runner # pass your repository and tag
+  types:
+  - k6

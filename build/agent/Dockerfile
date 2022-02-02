@@ -19,7 +19,6 @@ echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k
  xk6 build latest \
  --with github.com/mostafa/xk6-kafka@latest \
  --with github.com/dgzlopes/xk6-kv@latest \
- --with github.com/grafana/xk6-redis \
  --with github.com/dgzlopes/xk6-redis@latest \
  --with github.com/walterwanderley/xk6-stomp; 
 

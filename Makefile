@@ -10,6 +10,12 @@ mongo-dev:
 docker-build: 
 	docker build -t kubeshop/$(NAME)-runner -f build/agent/Dockerfile .
 
+docker-build-local: 
+	docker build -t hnminh/testkube-executor-k6-runner -f build/agent/Dockerfile .
+
+docker-push-local:
+	docker push hnminh/testkube-executor-k6-runner
+
 install-swagger-codegen-mac: 
 	brew install swagger-codegen
 
