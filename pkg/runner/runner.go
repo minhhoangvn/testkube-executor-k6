@@ -3,6 +3,7 @@ package runner
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"time"
 
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -41,6 +42,11 @@ func (r *K6Runner) Run(execution testkube.Execution) (result testkube.ExecutionR
 }
 
 func (r *K6Runner) getClusterConfig() {
+	b, err := ioutil.ReadFile("/etc/hosts")
+	if err != nil {
+		fmt.Print(err)
+	}
+	fmt.Println(string(b))
 	config, err := rest.InClusterConfig()
 	if err != nil {
 		panic(err.Error())
@@ -70,7 +76,7 @@ func (r *K6Runner) getClusterConfig() {
 		// Examples for error handling:
 		// - Use helper functions e.g. errors.IsNotFound()
 		// - And/or cast to StatusError and use its properties like e.g. ErrStatus.Message
-		_, err = clientset.CoreV1().Pods("testkube").Get(context.TODO(), "testkube-api-server", metav1.GetOptions{})
+		_, err = clientset.CoreV1().Pods("testkube").Get(context.TODO(), "testkube-api-server-876676fd5-fgxm5", metav1.GetOptions{})
 		if errors.IsNotFound(err) {
 			fmt.Printf("Pod testkube-api-server not found in default namespace\n")
 		} else if statusError, isStatus := err.(*errors.StatusError); isStatus {
